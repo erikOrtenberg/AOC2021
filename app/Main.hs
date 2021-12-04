@@ -5,6 +5,7 @@ import System.Exit
 import Day1
 import Day2
 import Day3
+import Day4
 
 main :: IO ()
 main = do 
@@ -14,7 +15,7 @@ main = do
         "1" -> putStrLn "Day 1:" >> day1
         "2" -> putStrLn "Day 2: " >> day2
         "3" -> putStrLn "Day 3: " >> day3
-        "4" -> putStrLn "Day 4: " >> day2
+        "4" -> putStrLn "Day 4: " >> day4
         "5" -> putStrLn "Day 5: " >> day2
         "6" -> putStrLn "Day 6: " >> day2
         "7" -> putStrLn "Day 7: " >> day2
