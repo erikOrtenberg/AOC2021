@@ -5,8 +5,9 @@ import GetInput (getFile)
 day2 :: IO ()
 day2 = do
     ss <- getFile "day2.txt"
-    putStrLn $ show $ (\(xs,ys) -> (sum xs) * (sum ys)) (unzip $ map (getValue . words) (lines ss))
-    putStrLn $ show $ (\(xs,ys) -> sum xs) (unzip $ map (getValue . words) (lines ss)) * (getDepth (map (getValue . words) (lines ss)) 0)
+    let x =  map (getValue . words) (lines ss)
+    putStrLn $ show $ (\(xs,ys) -> (sum xs) * (sum ys)) (unzip x)
+    putStrLn $ show $ (\(xs,ys) -> sum xs) (unzip x) * (getDepth x 0)
 
 getDepth :: [(Integer, Integer)] -> Integer -> Integer 
 getDepth [] n = 0
