@@ -1,4 +1,4 @@
-module Da11 where
+module Day11 where
 
-da11 :: IO()
-da11 = putStrLn ""
+day11 :: IO()
+day11 = putStrLn ""
