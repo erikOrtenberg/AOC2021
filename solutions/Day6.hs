@@ -7,9 +7,10 @@ import Data.List.Split (chunksOf, splitOn)
 day6 :: IO()
 day6 = do
     ss <- getFile "day6.txt"
-    let fish = convertToAmount $ map read $ splitOn "," ss ::[Int]
-    print $ sum $ (iterate updateFishies fish)!!80
-    print $ sum $ (iterate updateFishies fish)!!256
+    let fish = (iterate updateFishies (convertToAmount $ map read $ splitOn "," ss)) ::[[Int]]
+
+    print $ sum $ fish!!80
+    print $ sum $ fish!!256
     
 convertToAmount :: [Int] -> [Int] 
 convertToAmount list = map (\x -> length $ filter (==x) list) [0..8]  
