@@ -1,6 +1,7 @@
 module Main where
 
 import System.Exit
+import System.IO
 
 import Day1
 import Day2
@@ -31,6 +32,7 @@ import Day25
 main :: IO ()
 main = do 
     putStrLn "Välj en dag lmao:"
+    hFlush stdout
     x <- getLine
     case x of 
         "1" -> putStrLn "Day 1:" >> day1
@@ -60,4 +62,4 @@ main = do
         "25" -> putStrLn "Day 25: " >> day25
         "q" -> putStrLn "okej hejdå :)" >> exitSuccess 
         _   -> putStrLn "Idiotjävel, skriv rätt"
-    main
+    --main

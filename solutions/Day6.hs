@@ -4,19 +4,23 @@ import GetInput (getFile)
 import Data.List
 import Data.List.Split (chunksOf, splitOn)
 
+data Week = Week Int Int Int Int Int Int Int Int Int
+
 day6 :: IO()
 day6 = do
     ss <- getFile "day6.txt"
-    let fish = (iterate updateFishies (convertToAmount $ map read $ splitOn "," ss)) ::[[Int]]
-
-    print $ sum $ fish!!80
-    print $ sum $ fish!!256
+    let fish = convertToAmount . map read . splitOn "," $ ss 
+    print $ sumWeek $ foldr (\x y -> updateFishies y) fish [1..80] 
+    print $ sumWeek $ foldr (\x y -> updateFishies y) fish [1..256] 
     
-convertToAmount :: [Int] -> [Int] 
-convertToAmount list = map (\x -> length $ filter (==x) list) [0..8]  
+sumWeek :: Week -> Int
+sumWeek (Week a b c d e f g h i) = a + b + c + d + e + f + g + h + i
 
-updateFishies :: [Int] -> [Int]
-updateFishies [] = []
-updateFishies (x:xs) 
-    | x > 0 = zipWith (+) (xs ++ (repeat 0)) ((take 6 (repeat 0)) ++ [x,0,x]) 
-    | otherwise = (xs ++ (repeat 0))  
+convertToAmount :: [Int] -> Week
+convertToAmount list = intToWeek $ map (\x -> length $ filter (==x) list) [0..8]  
+    where
+        intToWeek :: [Int] -> Week
+        intToWeek (a:b:c:d:e:f:g:h:i:[]) = Week a b c d e f g h i
+
+updateFishies :: Week -> Week 
+updateFishies (Week a b c d e f g h i) = Week b c d e f g (h+a) i a
