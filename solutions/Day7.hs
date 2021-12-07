@@ -11,15 +11,8 @@ day7 = do
     ss <- getFile "day7.txt"
     let crabs = foldr (\x -> M.insertWith (+) x 1) M.empty $ map read $ splitOn "," ss :: Map Int Int
     let ((minCrab, a), (maxCrab, b)) = (M.findMin crabs, M.findMax crabs)
-    print $ minimum $ map (\x -> getFuelCost x crabs) [minCrab .. maxCrab] 
-    print $ minimum $ map (\x -> getFuelCost' x crabs) [minCrab .. maxCrab] 
-    putStrLn ""
+    print $ minimum $ map (\x -> getFuelCost (\k v -> (abs (x - k)) * v) crabs) [minCrab .. maxCrab] 
+    print $ minimum $ map (\x -> getFuelCost (\k v -> (abs (x - k)) * (1 + abs (x - k)) * v  `div` 2) crabs) [minCrab .. maxCrab] 
 
-tempMap = M.insert 5 1 $ M.insert 10 2 M.empty :: Map Int Int
-tempMap2 = M.insert 10 2 M.empty :: Map Int Int
-
-getFuelCost :: Int -> Map Int Int -> Int
-getFuelCost day m = sum . M.elems $ M.mapWithKey (\k v -> (abs (day - k)) * v) m
-
-getFuelCost' :: Int -> Map Int Int -> Int 
-getFuelCost' day m = sum . M.elems $ M.mapWithKey (\k v -> (abs (day - k)) * (1 + abs (day - k)) * v  `div` 2) m
+getFuelCost ::  (Int -> Int -> Int) -> Map Int Int -> Int
+getFuelCost f m = sum . M.elems $ M.mapWithKey f m
