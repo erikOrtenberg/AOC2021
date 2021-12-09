@@ -25,7 +25,7 @@ orderCypher unsortedCypher = [zero,one,two,three,four,five,six,seven,eight,nine]
         (seven:_) = filter (\x -> 3 == length x) unsortedCypher
         (eight:_) = filter (\x -> 7 == length x) unsortedCypher
         (three:_) = filter (\x -> length x == 5 && length (intersect one x) == 2) unsortedCypher
-        (nine:_) = (filter (\x -> length (intersect three x) == 5) unsortedCypher) \\ [eight, three]
+        (nine:_) = filter (\x -> length (intersect three x) == 5) unsortedCypher \\ [eight, three]
         zeroSix = filter (\x -> length (eight \\ x) == 1) unsortedCypher \\ [nine]
         (zero:_) = filter (\x -> length (intersect one x) == 2) zeroSix
         (six:_) = zeroSix \\ [zero]
@@ -37,7 +37,7 @@ convertOutput :: [String] -> [String] -> Int
 convertOutput _ [] = 0
 convertOutput lookup (x:output)
     | index < 0 = 0
-    | otherwise = 10^(length output) * index + convertOutput lookup output
+    | otherwise = 10^ length output * index + convertOutput lookup output
     where
         index = extractMaybe $ elemIndex x lookup
 
