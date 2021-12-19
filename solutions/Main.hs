@@ -44,7 +44,7 @@ main = do
         "7" -> putStrLn "Day 7: " >> day7
         "8" -> putStrLn "Day 8: " >> day8
         "9" -> putStrLn "Day 9: " >> day9
-        "10" -> putStrLn "Day 10: " >> day7
+        "10" -> putStrLn "Day 10: " >> day10
         "11" -> putStrLn "Day 11: " >> day11
         "12" -> putStrLn "Day 12: " >> day12
         "13" -> putStrLn "Day 13: " >> day13
