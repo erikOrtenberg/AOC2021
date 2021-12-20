@@ -4,5 +4,6 @@
 **.exe
 **.cabal
 dist-newstyle/*
+.vscode/*
 .ghc.*
 *~
