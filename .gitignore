@@ -3,5 +3,6 @@
 **.hi
 **.exe
 **.cabal
+dist-newstyle/*
 .ghc.*
 *~
