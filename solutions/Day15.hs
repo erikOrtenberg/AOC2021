@@ -40,7 +40,7 @@ testPQe = PQe (0,0) (PQe (0,1) End)
 
 day15 :: IO()
 day15 = do
-    ss <- readFile "../input/day15.txt"
+    ss <- getFile "day15.txt"
     let graph = foldr (\x -> M.insert x (map (map read . tail . splitOn "") (lines ss)!!snd x!!fst x)) M.empty [(x,y) | x <- [0.. (length $ head $ lines ss) - 1  ], y <- [0.. (length $ lines ss) - 1] ] :: Map (Int, Int) Int
     let t xIter yIter = foldr (\x@(kx,ky) -> M.insert (kx + xIter *  isqrt (M.size graph), ky + yIter *  isqrt (M.size graph)) (((fromMaybe 0 (M.lookup x graph)) + xIter + yIter - 1) `mod` 9 + 1)) graph [(x,y) | x <- [0.. (length $ head $ lines ss) - 1  ], y <- [0.. (length $ lines ss) - 1] ] :: Map (Int, Int) Int
     let bigGraph = foldr M.union graph $ map (\(xIter, yIter) -> t xIter yIter) [(x,y) | x <- [0..4], y <- [0..4]]
@@ -48,9 +48,11 @@ day15 = do
     let (s, pq) = (S.empty, (PQ.insert 0 (PQe (0,0) End) PQ.empty)) 
     let (s1, pq1) = stepPath graph s pq 
 
+    --part 1
     print $ findPath graph S.empty (0,0) (99,99) (PQ.insert 0 (PQe (0,0) End) PQ.empty)
+    --part 2
     print $ findPath bigGraph S.empty (0,0) (499,499) (PQ.insert 0 (PQe (0,0) End) PQ.empty)
-    print "wow"
+
 
 runXSteps :: Graph -> Set (Int, Int) -> MinPQueue Int PQentry -> Int -> (Set (Int, Int), MinPQueue Int PQentry)
 runXSteps _ _ pq 0 = (S.empty, pq)
