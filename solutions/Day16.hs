@@ -43,40 +43,7 @@ day16 :: IO()
 day16 = do
     ss <- getFile "day16.txt"
     let bin = concatMap hexToBin ss
-    let (packet, s) = createPacket bin
-
-    --tests
-    {-
-    print $ createPacket "110100101111111000101000"
-    print $ createPacket "00111000000000000110111101000101001010010001001000000000"
-    print $ createPacket "11101110000000001101010000001100100000100011000001100000"
-    print $ createPacket $ concatMap hexToBin "8A004A801A8002F478"
-    print $ sumVersionNumber (fst (createPacket $ concatMap hexToBin "8A004A801A8002F478")) == 16
-    print $ createPacket $ concatMap hexToBin "620080001611562C8802118E34"
-    print $ sumVersionNumber (fst (createPacket $ concatMap hexToBin "620080001611562C8802118E34")) == 12
-    print $ createPacket $ concatMap hexToBin "C0015000016115A2E0802F182340"
-    print $ sumVersionNumber (fst (createPacket $ concatMap hexToBin "C0015000016115A2E0802F182340")) == 23
-    print $ createPacket $ concatMap hexToBin "A0016C880162017C3686B18A3D4780"
-    print $ sumVersionNumber (fst (createPacket $ concatMap hexToBin "A0016C880162017C3686B18A3D4780")) == 31
-    print $ applyOps $ fst $ createPacket $ concatMap hexToBin "C200B40A82"
-    print $ applyOps (fst $ createPacket $ concatMap hexToBin "C200B40A82") == 3 
-    print $ applyOps $ fst $ createPacket $ concatMap hexToBin "04005AC33890"
-    print $ applyOps (fst $ createPacket $ concatMap hexToBin "04005AC33890") == 54 
-    print $ applyOps $ fst $ createPacket $ concatMap hexToBin "880086C3E88112"
-    print $ applyOps (fst $ createPacket $ concatMap hexToBin "880086C3E88112") == 7 
-    print $ applyOps $ fst $ createPacket $ concatMap hexToBin "CE00C43D881120"
-    print $ applyOps (fst $ createPacket $ concatMap hexToBin "CE00C43D881120") == 9 
-    print $ applyOps $ fst $ createPacket $ concatMap hexToBin "D8005AC2A8F0"
-    print $ applyOps (fst $ createPacket $ concatMap hexToBin "D8005AC2A8F0") == 1 
-    print $ applyOps $ fst $ createPacket $ concatMap hexToBin "F600BC2D8F"
-    print $ applyOps (fst $ createPacket $ concatMap hexToBin "F600BC2D8F") == 0
-    print $ applyOps $ fst $ createPacket $ concatMap hexToBin "9C005AC2F8F0"
-    print $ applyOps (fst $ createPacket $ concatMap hexToBin "9C005AC2F8F0") == 0 
-    print $ applyOps $ fst $ createPacket $ concatMap hexToBin "9C0141080250320F1802104A08"
-    print $ applyOps (fst $ createPacket $ concatMap hexToBin "9C0141080250320F1802104A08") == 1
-    -}
-
-   
+    let (packet, s) = createPacket bin   
     --part 1
     print $ sumVersionNumber packet
     --part 2
