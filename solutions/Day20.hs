@@ -44,8 +44,6 @@ showImage image = concatMap (\y -> [f image (x, y) | x <- [minX .. maxX]] ++ "\n
             | otherwise  = '.'
         (minX,maxX,minY,maxY) = findBounds image
 
--- have to take care of the fact that all infinte points filp every iteration since head alg = '#' and last alg = '.'. 
--- needs two modes of operation, when all points are '.' and '#' respectively.
 runAlgXTimes :: Vector Char -> Bool -> Image -> Int -> Image
 runAlgXTimes _ _ image 0 = image
 runAlgXTimes alg b image iterations = runAlgXTimes alg inverted newImage (iterations - 1)
