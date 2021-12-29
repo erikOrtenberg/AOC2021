@@ -22,7 +22,7 @@ instance (Num a, Num b) => Num (a,b)  where
 
 day21 :: IO()
 day21 = do
-    ss <- readFile "input/day21.txt"
+    ss <- getFile "day21.txt"
     let input = lines ss
     let (player1, player2) = ((read [last $ head input],0), (read [last $ last input],0)) :: ((Player,Score),(Player,Score))
     let t@(p1,p2,d) = progressOneTurn (1,1) player1 player2
