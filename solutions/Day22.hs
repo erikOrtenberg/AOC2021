@@ -88,4 +88,3 @@ day22 = do
 
     --part 2
     print $ part2 ranges
-    print "wow"

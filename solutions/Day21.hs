@@ -30,7 +30,6 @@ day21 = do
     print $ part1 (1,1) player1 player2
     --part 2
     print $ part2 player1 player2
-    print "wow"
 
 cMod :: Int -> Int -> Int
 cMod x y = ((x - 1) `mod` y) + 1
@@ -84,13 +83,6 @@ allMovePermutations p1 = [threes, fours, fives, sixes, sevens, eights, nines]
         eights = (f 8 p1, 3)
         nines = (f 9 p1, 1)
         f x p = ((fst p + x) `cMod` 10, snd p + (fst p + x) `cMod` 10)
-{-
-part2' :: Dice -> (Player, Score) -> (Player, Score) -> Map Player Int
-part2' d p1 p2 
-    | snd p1 >= 21 = M.singleton p1 1
-    | snd p2 >= 21 = M.singleton p2 1
-    | otherwise = map (M.unionsWith (+)) [part2' (1, d) ]
--}
 
 part1 :: Dice -> (Player, Score) -> (Player, Score) -> Int
 part1 d p1 p2

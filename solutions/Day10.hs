@@ -21,7 +21,6 @@ day10 = do
     let completedBrackets = sort $ map (\line -> foldl (\x y -> x*5 + (getClosedVal y)) 0 line) (map autoComplete incompleteLines)
     --print incompleteLines
     print $ completedBrackets!!(length completedBrackets `div` 2) 
-    print "end"
 
 getClosedVal :: Char -> Int
 getClosedVal c = case c of

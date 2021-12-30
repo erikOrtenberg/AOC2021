@@ -65,4 +65,3 @@ day24 = do
     --part 2
     putStrLn "n1 = 1  <->  n14 = 2\nn2 = 2  <->  n13 = 1\nn3 = 9  <->  n4 = 1\nn5 = 1  <->  n12 = 7\nn6 = 8  <->  n9 = 1\nn8 = 6  <->  n7 = 1\nn10 = 7 <->  n11 = 1"
     putStrLn "12911816171712"
-    print "wow"

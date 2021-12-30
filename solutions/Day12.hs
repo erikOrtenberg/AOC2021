@@ -26,8 +26,6 @@ day12 = do
     print $ getEdges graph "start"  
     print $ length $ filter (\(Path x b) -> last x == "end") $ findPaths graph [(Path ["start"] True)]
     print $ length $ filter (\(Path x b) -> last x == "end") $ findPaths graph [(Path ["start"] False)]
-    --print $ take 1 $ drop 7 $ iterate (findPaths graph) [["start"]]
-    print "wow"
 
 
 findPaths :: Graph -> [Path] -> [Path]
